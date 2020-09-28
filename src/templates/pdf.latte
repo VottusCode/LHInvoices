@@ -1,0 +1,95 @@
+<link
+  href="/assets/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/invoice.css" />
+
+<div id="invoice">
+  <div class="invoice overflow-auto">
+    <div style="min-width: 600px">
+      <header>
+        <div class="row">
+          <div class="col">
+            <a target="_blank" href="https://forhost.eu">
+              <img
+                src="https://lite-host.eu/img/lite-host.png"
+                data-holder-rendered="true"
+                style="max-height: 100px"
+              />
+            </a>
+          </div>
+          <div class="col company-details">
+            <h2 class="name">
+              <a target="_blank" href="https://lobianijs.com"> Lite-Host.eu </a>
+            </h2>
+            <hr />
+            <div>invoice@lite-host.eu</div>
+            <div>www.lite-host.eu</div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="row contacts">
+          <div class="col invoice-to">
+            <div class="text-gray-light">Faktura pro:</div>
+            <h2 class="to">{$invoice['name']}</h2>
+            <div class="address">{$invoice->address}</div>
+            <div class="email">
+              <a href="mailto:novak@example.com">{$invoice->email}</a>
+            </div>
+          </div>
+          <div class="col invoice-details">
+            <h1 class="invoice-id">Daňový doklad #{$invoice->invoiceNum}</h1>
+            <div class="date">Datum vystavení: {$invoice->invoiceCreated}</div>
+            <div class="date">Datum splatnosti: {$invoice->invoiceDue}</div>
+          </div>
+        </div>
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th class="text-left">Popis</th>
+              <th class="text-right">Množství</th>
+              <th class="text-right">Cena / kus</th>
+              <th class="text-right">Celkem bez DPH</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="no">1</td>
+              <td class="text-left">
+                <h3>Minecraft hosting</h3>
+                Balíček Lite - IP: mcn1.lite-host.eu:33456
+              </td>
+              <td class="unit">1</td>
+              <td class="qty">100 Kč</td>
+              <td class="total">100,- Kč</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">Cena bez DPH</td>
+              <td>{$pricing->totalWithoutTax},- CZK</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">DPH {$pricing->$taxPercent}%</td>
+              <td>{$pricing->taxTotal},- CZK</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">CELKEM</td>
+              <td>{$pricing->$totalWithTax},- CZK</td>
+            </tr>
+          </tfoot>
+        </table>
+      </main>
+    </div>
+
+    <footer>
+      Tato faktura byla automaticky generována systémem LHInvoices v1.1
+    </footer>
+    <div></div>
+  </div>
+</div>

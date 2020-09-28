@@ -1,0 +1,21 @@
+{
+  "name": "vottusuwu/lol",
+  "authors": [
+    {
+      "name": "VottusCode",
+      "email": "vottus@vott.us"
+    }
+  ],
+  "require": {
+    "fpdf/fpdf": "^1.82",
+    "setasign/tfpdf": "^1.32",
+    "mpdf/mpdf": "^8.0",
+    "latte/latte": "^2.8",
+    "tracy/tracy": "^2.7"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  }
+}
