@@ -24,11 +24,10 @@ use Tracy\Debugger;
  */
 if (!defined('DEVELOPMENT')) define("DEVELOPMENT", false);
 
-if (DEVELOPMENT) Debugger::enable();
+if (DEVELOPMENT) Debugger::enable(Debugger::DEVELOPMENT);
 
 /**
  * Starting the application
  */
 App::start();
 
-?>

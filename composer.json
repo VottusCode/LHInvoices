@@ -8,7 +8,7 @@
   ],
   "require": {
     "latte/latte": "^2.8",
-    "dompdf/dompdf": "^0.8.6"
+    "knplabs/knp-snappy": "^1.2"
   },
   "require-dev": {
     "tracy/tracy": "^2.7"
