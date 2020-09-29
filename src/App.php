@@ -66,7 +66,7 @@ class App
         /**
          * Loading Styles
          *
-         * Dompdf doesn't work well with outside CSS,
+         * Snappy doesn't work well with outside CSS,
          * so as a workaround all CSS files in the $styles
          * folder are concatenated into the resulting HTML.
          *
@@ -99,7 +99,7 @@ class App
         /**
          * Creating the final PDF
          *
-         * Using Dompdf, the HTML is converted to a PDF file
+         * Using Snappy, the HTML is converted to a PDF file
          * and the output is sent to the user.
          */
         $pdf = new Pdf('/usr/local/bin/wkhtmltopdf', ["encoding"=>"utf-8"]);
