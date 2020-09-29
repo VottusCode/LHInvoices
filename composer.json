@@ -7,10 +7,10 @@
     }
   ],
   "require": {
-    "fpdf/fpdf": "^1.82",
-    "setasign/tfpdf": "^1.32",
-    "mpdf/mpdf": "^8.0",
     "latte/latte": "^2.8",
+    "dompdf/dompdf": "^0.8.6"
+  },
+  "require-dev": {
     "tracy/tracy": "^2.7"
   },
   "autoload": {

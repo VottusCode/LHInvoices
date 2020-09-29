@@ -5,6 +5,16 @@ namespace LHInvoices\Objects;
 class Item
 {
 
+    function __construct($constructor) {
+        foreach ($constructor as $key => $value) {
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
+            } else {
+                trigger_error("Passing redundant key $key to Item, ignoring.", E_USER_WARNING);
+            }
+        }
+    }
+
     /** @var string */
     public $id;
 

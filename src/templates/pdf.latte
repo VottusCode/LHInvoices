@@ -1,16 +1,14 @@
-<link
-  href="/assets/bootstrap.min.css"
-  rel="stylesheet"
-/>
-<link rel="stylesheet" href="/assets/invoice.css" />
-
+{varType LHInvoices\Objects\Invoice $invoice}
+{varType LHInvoices\Objects\Item[] $items}
+{varType LHInvoices\Objects\Pricing $pricing}
+<meta charset="UTF-8" />
 <div id="invoice">
   <div class="invoice overflow-auto">
     <div style="min-width: 600px">
       <header>
         <div class="row">
           <div class="col">
-            <a target="_blank" href="https://forhost.eu">
+            <a target="_blank" href="https://lite-host.eu">
               <img
                 src="https://lite-host.eu/img/lite-host.png"
                 data-holder-rendered="true"
@@ -20,10 +18,10 @@
           </div>
           <div class="col company-details">
             <h2 class="name">
-              <a target="_blank" href="https://lobianijs.com"> Lite-Host.eu </a>
+              <a target="_blank" href="https://lite-host.eu"> Lite-Host.eu </a>
             </h2>
             <hr />
-            <div>invoice@lite-host.eu</div>
+            <div>management@lite-host.eu</div>
             <div>www.lite-host.eu</div>
           </div>
         </div>
@@ -32,7 +30,7 @@
         <div class="row contacts">
           <div class="col invoice-to">
             <div class="text-gray-light">Faktura pro:</div>
-            <h2 class="to">{$invoice['name']}</h2>
+            <h2 class="to">{$invoice->name}</h2>
             <div class="address">{$invoice->address}</div>
             <div class="email">
               <a href="mailto:novak@example.com">{$invoice->email}</a>
@@ -55,15 +53,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="no">1</td>
+            <tr n:foreach="$items as $item">
+              {varType LHInvoices\Objects\Item $item}
+              <td class="no">{$item->id}.</td>
               <td class="text-left">
-                <h3>Minecraft hosting</h3>
-                Balíček Lite - IP: mcn1.lite-host.eu:33456
+                <h3>{$item->title}</h3>
+                {$item->detail}
               </td>
-              <td class="unit">1</td>
-              <td class="qty">100 Kč</td>
-              <td class="total">100,- Kč</td>
+              <td class="unit">{$item->quantity} ks</td>
+              <td class="qty">{$item->pricePerOne} Kč</td>
+              <td class="total">{$item->totalWithoutTax},- Kč</td>
             </tr>
           </tbody>
           <tfoot>
@@ -74,13 +73,13 @@
             </tr>
             <tr>
               <td colspan="2"></td>
-              <td colspan="2">DPH {$pricing->$taxPercent}%</td>
+              <td colspan="2">DPH {$pricing->taxPercent}%</td>
               <td>{$pricing->taxTotal},- CZK</td>
             </tr>
             <tr>
               <td colspan="2"></td>
               <td colspan="2">CELKEM</td>
-              <td>{$pricing->$totalWithTax},- CZK</td>
+              <td>{$pricing->totalWithTax},- CZK</td>
             </tr>
           </tfoot>
         </table>
@@ -88,7 +87,9 @@
     </div>
 
     <footer>
-      Tato faktura byla automaticky generována systémem LHInvoices v1.1
+      Tato faktura byla automaticky generována systémem LHInvoices v1.0
+      <br/>
+      V případě špatně vygenerovaných informací prosím kontaktujte podporu na emailu <strong>support@lite-host.eu</strong>
     </footer>
     <div></div>
   </div>

@@ -1,27 +1,34 @@
 <?php declare(strict_types=1);
 
+/**
+ * LHInvoices
+ *
+ * @copyright Lite-Host.eu, 2020
+ */
+
+/**
+ * Composer
+ *
+ * Requiring Composer's autoloader to load
+ * all classes and dependencies.
+ */
 require __DIR__ . '/../vendor/autoload.php';
 
 use LHInvoices\App;
 use Tracy\Debugger;
-Debugger::enable();
 
-$app = new App;
-$app->boot()
+/**
+ * Defining the environment.
+ *
+ * In development mode Tracy is enabled.
+ */
+if (!defined('DEVELOPMENT')) define("DEVELOPMENT", false);
 
-// require __DIR__ . '/pdf_template.php';
+if (DEVELOPMENT) Debugger::enable();
 
-// use Mpdf\Mpdf;
-// use Latte\Engine;
-
-// $latte = new Latte\Engine;
-// $latte->render(__DIR__ . '')
-
-// $pdf = new Mpdf(['']);
-// $pdf->setSourceFile('pdf_template.html');
-
-// $pdf->WriteHTML($html);
-
-// $pdf->Output();
+/**
+ * Starting the application
+ */
+App::start();
 
 ?>
